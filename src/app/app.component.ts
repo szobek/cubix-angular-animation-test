@@ -1,12 +1,50 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { NameFormatPipe } from './name-format.pipe';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  state,
+} from '@angular/animations';
+import { CommonModule } from '@angular/common';
+interface Data {
+  id: number;
+  name: string;
+  age: number;
+  address: string;
+}
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [NameFormatPipe, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  animations: [
+    trigger('hideDetails', [
+      state('open', style({ transform: 'scale(1)', backgroundColor: 'lightgreen' })),
+      state('closed', style({ transform: 'scale(0)', backgroundColor: 'lightcoral', display:'none'})),
+      transition('open <=> closed', animate('500ms ease-in-out')),
+    ]),
+  ],
 })
 export class AppComponent {
-  title = 'animation-test';
+  viewedData?: Data;
+  datas: Data[] = [
+    { id: 1, name: 'John Doe', age: 30, address: '123 Main St' },
+    { id: 2, name: 'Jane Smith', age: 25, address: '456 Oak St' },
+    { id: 3, name: 'Alice Johnson', age: 28, address: '789 Pine St' },
+    { id: 4, name: 'Bob Brown', age: 35, address: '101 Maple St' },
+    { id: 5, name: 'Charlie Davis', age: 22, address: '202 Cedar St' },
+    { id: 6, name: 'Diana Evans', age: 29, address: '303 Birch St' },
+    { id: 7, name: 'Ethan Foster', age: 32, address: '404 Elm St' },
+    { id: 8, name: 'Fiona Green', age: 27, address: '505 Spruce St' },
+    { id: 9, name: 'George Harris', age: 31, address: '606 Fir St' },
+    { id: 10, name: 'Hannah Ives', age: 24, address: '707 Willow St' },
+  ];
+  viewDetails(data: Data) {
+    this.viewedData = data;
+  }
+  closeDetails() {
+    this.viewedData = undefined;
+  }
 }
