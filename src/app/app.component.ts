@@ -21,14 +21,19 @@ interface Data {
   styleUrl: './app.component.scss',
   animations: [
     trigger('hideDetails', [
-      state('open', style({ transform: 'scale(1)', backgroundColor: 'lightgreen' })),
-      state('closed', style({ transform: 'scale(0)', backgroundColor: 'lightcoral', display:'none'})),
-      transition('open <=> closed', animate('500ms ease-in-out')),
+      transition(':enter', [
+        style({ opacity: 0,backgroundColor:'#363' }),
+        animate('2300ms', style({ opacity: 1,backgroundColor:'#36f',color:'white' }))
+      ]),
+      transition(':leave', [
+        animate('300ms', style({ opacity: 0 }))
+      ])
     ]),
   ],
 })
 export class AppComponent {
   viewedData?: Data;
+  showDetails:boolean = false;
   datas: Data[] = [
     { id: 1, name: 'John Doe', age: 30, address: '123 Main St' },
     { id: 2, name: 'Jane Smith', age: 25, address: '456 Oak St' },
@@ -43,8 +48,10 @@ export class AppComponent {
   ];
   viewDetails(data: Data) {
     this.viewedData = data;
+    this.showDetails=true
   }
   closeDetails() {
     this.viewedData = undefined;
+    this.showDetails=false
   }
 }
