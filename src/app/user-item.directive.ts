@@ -12,6 +12,9 @@ export class UserItemDirective {
     this.el.nativeElement.style.border="1px solid #36f"
     this.el.nativeElement.style.margin="5px 0"
     this.el.nativeElement.style.padding="5px"
+    const elem = document.createElement("div")
+    elem.innerText='test'
+    this.el.nativeElement.append(elem)
   }
 
 }
