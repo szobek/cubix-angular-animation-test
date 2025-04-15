@@ -7,6 +7,6 @@
 {{changeShowDetails()}}
 <hr>
 @if(showDetails){
-<app-user-detail (changeShowDetails)="showDetails=false" [UserDetail]="viewedData ?? null" />
+<app-user-detail (changeShowDetails)="showDetails=false;viewedData=null" [UserDetail]="viewedData ?? null" />
 
 }
