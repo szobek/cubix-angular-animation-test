@@ -22,11 +22,12 @@ interface Data {
   animations: [
     trigger('hideDetails', [
       transition(':enter', [
-        style({ opacity: 0,backgroundColor:'#363' }),
-        animate('2300ms', style({ opacity: 1,backgroundColor:'#36f',color:'white' }))
+        style({ opacity: 0,backgroundColor:'rgb(158, 158, 158)',color:'wheat'  }),
+        animate('2300ms', style({ opacity: 1}))
       ]),
       transition(':leave', [
-        animate('300ms', style({ opacity: 0 }))
+        style({ opacity: 1 }),
+        animate('300ms', style({ opacity: 0, }))
       ])
     ]),
   ],
