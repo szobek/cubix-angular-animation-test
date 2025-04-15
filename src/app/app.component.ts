@@ -3,9 +3,10 @@ import { NameFormatPipe } from './name-format.pipe';
 import { CommonModule } from '@angular/common';
 import { UserDetail } from './models/userDetail.model';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserItemDirective } from './user-item.directive';
 @Component({
   selector: 'app-root',
-  imports: [NameFormatPipe, CommonModule,UserDetailComponent],
+  imports: [NameFormatPipe, CommonModule,UserDetailComponent,UserItemDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   

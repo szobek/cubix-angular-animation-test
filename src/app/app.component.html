@@ -1,5 +1,5 @@
 @for (item of datas; track item.id) {
-<div [class.viewdata]="viewedData?.id === item.id">
+<div appUserItem [class.viewdata]="viewedData?.id === item.id">
   <p [innerHTML]="item.name | nameFormat"></p>
   <button (click)="viewDetails(item)">View Details</button>
 </div>
