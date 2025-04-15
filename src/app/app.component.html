@@ -1,6 +1,6 @@
 @for (item of datas; track item.id) {
 <div [class.viewdata]="viewedData?.id === item.id">
-  <p>{{ item.name |nameFormat}}</p>
+  <p [innerHTML]="item.name | nameFormat"></p>
   <button (click)="viewDetails(item)">View Details</button>
 </div>
 }

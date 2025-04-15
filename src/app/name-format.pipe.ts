@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class NameFormatPipe implements PipeTransform {
 
   transform(value:string|undefined): string  {
-    return `Name: ${value}`;
+    return `Name: <b>${value} </b>`;
   }
 
 }
