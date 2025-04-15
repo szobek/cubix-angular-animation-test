@@ -34,6 +34,7 @@ interface Data {
   ],
 })
 export class AppComponent {
+  changeDetectionCounter:number = 0;
   viewedData?: Data;
   showDetails:boolean = false;
   datas: Data[] = [
@@ -55,5 +56,9 @@ export class AppComponent {
   closeDetails() {
     this.viewedData = undefined;
     this.showDetails=false
+  }
+  chengeShowDetails(){
+   console.log("change", ++this.changeDetectionCounter);
+   
   }
 }
