@@ -9,12 +9,20 @@
 @if(showDetails){
 
   <div [@hideDetails] class="details">
-    <h5>{{viewedData?.name| nameFormat}}</h5>
+    <h5 [innerHTML]="viewedData?.name | nameFormat"></h5>
     <ul>
       <li>Address: {{viewedData?.address}}</li>
       <li>Age: {{viewedData?.age}}</li>
     </ul>
-    
-    <button (click)="closeDetails()">Close Details</button>
-  </div>
+    @if(viewedData?.books){
+      <ul>
+        
+        @for(book of viewedData?.books;track book){
+    <li>{{book}}</li>
+    }
+  </ul>
+  }
+
+  <button (click)="closeDetails()">Close Details</button>
+</div>
 }

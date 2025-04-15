@@ -13,6 +13,7 @@ interface Data {
   name: string;
   age: number;
   address: string;
+  books?: string[];
 }
 @Component({
   selector: 'app-root',
@@ -43,7 +44,7 @@ export class AppComponent {
     { id: 5, name: 'Charlie Davis', age: 22, address: '202 Cedar St' },
     { id: 6, name: 'Diana Evans', age: 29, address: '303 Birch St' },
     { id: 7, name: 'Ethan Foster', age: 32, address: '404 Elm St' },
-    { id: 8, name: 'Fiona Green', age: 27, address: '505 Spruce St' },
+    { id: 8, name: 'Fiona Green', age: 27, address: '505 Spruce St',books:["book1","book2"] },
     { id: 9, name: 'George Harris', age: 31, address: '606 Fir St' },
     { id: 10, name: 'Hannah Ives', age: 24, address: '707 Willow St' },
   ];
