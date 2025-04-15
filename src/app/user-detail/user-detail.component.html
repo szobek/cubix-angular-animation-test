@@ -1,0 +1,17 @@
+<div [@hideDetails] class="details">
+    <h5 [innerHTML]="userDetail?.name | nameFormat"></h5>
+    <ul>
+      <li>Address: {{userDetail?.address}}</li>
+      <li>Age: {{userDetail?.age}}</li>
+    </ul>
+    @if(userDetail?.books){
+    <ul>
+  
+      @for(book of userDetail?.books;track book){
+      <li>{{book}}</li>
+      }
+    </ul>
+    }
+  
+    <button (click)="closeDetails()">Close Details</button>
+  </div>

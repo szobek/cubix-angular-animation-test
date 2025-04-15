@@ -1,43 +1,20 @@
 import { Component } from '@angular/core';
 import { NameFormatPipe } from './name-format.pipe';
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-  state,
-} from '@angular/animations';
 import { CommonModule } from '@angular/common';
-interface Data {
-  id: number;
-  name: string;
-  age: number;
-  address: string;
-  books?: string[];
-}
+import { UserDetail } from './models/userDetail.model';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 @Component({
   selector: 'app-root',
-  imports: [NameFormatPipe, CommonModule],
+  imports: [NameFormatPipe, CommonModule,UserDetailComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  animations: [
-    trigger('hideDetails', [
-      transition(':enter', [
-        style({ opacity: 0,backgroundColor:'rgb(158, 158, 158)',color:'wheat'  }),
-        animate('2300ms', style({ opacity: 1}))
-      ]),
-      transition(':leave', [
-        style({ opacity: 1 }),
-        animate('300ms', style({ opacity: 0, }))
-      ])
-    ]),
-  ],
+  
 })
 export class AppComponent {
   changeDetectionCounter:number = 0;
-  viewedData?: Data;
+  viewedData?: UserDetail|null;
   showDetails:boolean = false;
-  datas: Data[] = [
+  datas: UserDetail[] = [
     { id: 1, name: 'John Doe', age: 30, address: '123 Main St' },
     { id: 2, name: 'Jane Smith', age: 25, address: '456 Oak St' },
     { id: 3, name: 'Alice Johnson', age: 28, address: '789 Pine St' },
@@ -49,16 +26,12 @@ export class AppComponent {
     { id: 9, name: 'George Harris', age: 31, address: '606 Fir St' },
     { id: 10, name: 'Hannah Ives', age: 24, address: '707 Willow St' },
   ];
-  viewDetails(data: Data) {
+  viewDetails(data: UserDetail) {
     this.viewedData = data;
     this.showDetails=true
   }
-  closeDetails() {
-    this.viewedData = undefined;
-    this.showDetails=false
-  }
-  chengeShowDetails(){
+
+  changeShowDetails(){
    console.log("change", ++this.changeDetectionCounter);
-   
   }
 }
